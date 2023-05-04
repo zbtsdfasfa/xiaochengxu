@@ -1,0 +1,1 @@
+<view class="hot-container data-v-41251cbc"><image class="logo _img data-v-41251cbc" src="{{$root.m0}}" alt="慕课热搜logo" mode="aspectFit"></image><view class="search-box data-v-41251cbc"><my-search vue-id="0e4143a4-1" placeholder-text="uni-app自定义组件" class="data-v-41251cbc" bind:__l="__l"></my-search></view></view>
