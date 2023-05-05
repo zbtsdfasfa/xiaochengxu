@@ -2,6 +2,8 @@
 // #ifndef VUE3
 import Vue from 'vue'
 import App from './App'
+// 引入公共的样式
+import './styles/global.scss'
 
 Vue.config.productionTip = false
 

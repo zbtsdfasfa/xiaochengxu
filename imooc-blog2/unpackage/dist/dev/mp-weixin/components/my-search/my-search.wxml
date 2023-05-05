@@ -1,0 +1,1 @@
+<view class="my-search-container data-v-8ad86a50"><view class="my-search-box data-v-8ad86a50"><image class="icon _img data-v-8ad86a50" src="{{$root.m0}}" alt="搜索图标"></image><text class="placeholder data-v-8ad86a50">{{placeholderText}}</text></view></view>

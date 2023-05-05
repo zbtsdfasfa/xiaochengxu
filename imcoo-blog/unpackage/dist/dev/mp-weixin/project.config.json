@@ -20,7 +20,7 @@
     "condition": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.31.1",
+  "libVersion": "",
   "appid": "wx451db722058166d1",
   "projectname": "imcoo-blog",
   "condition": {},

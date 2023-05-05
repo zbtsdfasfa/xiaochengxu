@@ -1,31 +1,29 @@
-import { error } from "console";
-
-// 用于封装网络请求的js文件
-const BASE_URL = "https://www.fastmock.site/mock/b903dd8103cd55bfc6bd9e8006afc37f/shop-01";
-function request({url, data,method}) {
+// const  baseURL = 'https://www.fastmock.site/mock/95d2c25cb3898f63758dbb2abb1359e2/api'
+function request({url,data,method}) {
 	return new Promise((resolve,reject) =>{
 		uni.request({
-			url:BASE_URL + url,
+			url,
 			data,
-			method:,
+			method,
 			success:({data}) =>{
-				if (data.success) {
-					resolve(data);
+				if(data.success) {
+					// 请求成功
+					resolve(data)
 				} else {
+					// 请求失败了
 					uni.showToast({
 						title:data.message,
-						icon:'none',
+						icon:"non",
 						mask:true,
 						duration:3000
 					});
 					reject(data.message);
 				}
 			},
-			fail:(error) =>{
+			fail:(error)=> {
 				reject(error);
 			}
 		})
 	})
 }
-
-export default request;
+export default request

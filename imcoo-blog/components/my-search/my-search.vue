@@ -8,22 +8,22 @@
 			<!-- 文本内容 -->
 			<text class="placeholder">{{ placeholderText }}</text>
 		</view>
-		
+
 	</view>
 </template>
 
 <script>
 	export default {
-		name:"my-search",
-		props:{
-			placeholderText:{
-				type:String,
-				default:"搜索"
+		name: "my-search",
+		props: {
+			placeholderText: {
+				type: String,
+				default: "搜索"
 			}
 		},
 		data() {
 			return {
-				
+
 			};
 		}
 	}
@@ -31,22 +31,29 @@
 
 <style lang="scss" scoped>
 	.my-search-container {
-		// background-color: red;	
 		display: flex;
 		align-items: center;
+
 		.my-search-box {
+			height: 36px;
+			background-color: #ffffff;
+			border-radius: 15px;
+			border: 1px solid #c9c9c9;
+			width: 100%;
 			display: flex;
 			align-items: center;
-			height: 35px;
-			width: 100%;
-			border: 1px solid gray;
-			border-radius: 10px;
+			padding: 0 $uni-spacing-row-base;
+			
 			.icon {
-				display: fle;
-				align-items: center;
-				width: 20px;
-				height: 20px;
-			}
+			      width: $uni-img-size-sm;
+			      height: $uni-img-size-sm;
+			    }
+				
+				.placeholder {
+				      font-size: $uni-font-size-sm;
+				      margin-left: $uni-spacing-row-sm;
+				      color: #454545;
+				    }
 		}
 	}
 </style>
