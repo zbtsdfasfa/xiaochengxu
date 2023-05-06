@@ -27,6 +27,12 @@
 .hot-container.data-v-41251cbc {
   background-color: #ffffff;
 }
+.hot-container .tab-sticky.data-v-41251cbc {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
 .hot-container .logo.data-v-41251cbc {
   width: 100%;
   height: 80px;

@@ -4,6 +4,12 @@ import Vue from 'vue'
 import App from './App'
 // 引入公共的样式
 import './styles/global.scss'
+// 引入过滤器
+import * as filters from './filters'
+// 注册过滤
+Object.keys(filters).forEach((key)=>{
+  Vue.filter(key, filters[key]);
+})
 
 Vue.config.productionTip = false
 
