@@ -9,7 +9,7 @@
 		:bgColor="config.backgroundColor"
 		:placeholder="placeholderText"
 		:value="value"
-		@canfirm="onSearch"
+		@confirm="onSearch"
 		@focus="onFocus"
 		@blur="onBlur"
 		@clear="onClear"

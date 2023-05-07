@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "search-result-item-theme-1": "/components/search-result-item-theme-1/search-result-item-theme-1",
+    "search-result-item-theme-2": "/components/search-result-item-theme-2/search-result-item-theme-2",
+    "search-result-item-theme-3": "/components/search-result-item-theme-3/search-result-item-theme-3"
+  },
+  "component": true
+}
