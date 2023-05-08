@@ -110,7 +110,7 @@ try {
       return __webpack_require__.e(/*! import() | components/search-history/search-history */ "components/search-history/search-history").then(__webpack_require__.bind(null, /*! @/components/search-history/search-history.vue */ 112))
     },
     searchResultList: function () {
-      return __webpack_require__.e(/*! import() | components/search-result-list/search-result-list */ "components/search-result-list/search-result-list").then(__webpack_require__.bind(null, /*! @/components/search-result-list/search-result-list.vue */ 119))
+      return Promise.all(/*! import() | components/search-result-list/search-result-list */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/search-result-list/search-result-list")]).then(__webpack_require__.bind(null, /*! @/components/search-result-list/search-result-list.vue */ 119))
     },
   }
 } catch (e) {
@@ -177,6 +177,7 @@ exports.default = void 0;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 44));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 46));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _mescrollComp = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js */ 229));
 var _search = __webpack_require__(/*! api/search */ 69);
 var _vuex = __webpack_require__(/*! vuex */ 34);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -188,6 +189,8 @@ var SEARCH_HISTORY = '1';
 // 搜索结果
 var SEARCH_RESULT = '2';
 var _default = {
+  // 注册mixins
+  mixins: [_mescrollComp.default],
   data: function data() {
     return {
       // 绑定输入框中的内容
@@ -263,21 +266,21 @@ var _default = {
     // },
     // 获取焦点
     onSearchFocus: function onSearchFocus(val) {
-      console.log("获取焦点");
+      // console.log("获取焦点");
       this.showType = SEARCH_HISTORY;
     },
     // 失去焦点
     onSearchBlur: function onSearchBlur(val) {
-      console.log('失去焦点');
+      // console.log('失去焦点');
     },
     // 清空内容
     onSearchClear: function onSearchClear(val) {
-      console.log('清空内容');
+      // console.log('清空内容');
       this.showType = SEARCH_HISTORY;
     },
     // 点击取消
     onSearchCancel: function onSearchCancel(val) {
-      console.log('点击取消按钮');
+      // console.log('点击取消按钮');
       this.showType = HOT_LIST;
     }
   })

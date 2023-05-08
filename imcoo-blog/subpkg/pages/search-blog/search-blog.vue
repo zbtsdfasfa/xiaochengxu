@@ -28,12 +28,15 @@
    </view>
    <!-- 热搜文章结果 -->
    <view class="search-result-box" v-else>
-    <search-result-list :queryStr="this.searchVal"></search-result-list>
+    <!-- 给mescroll-body的组件添加：ref=mescrollItem -->
+    <search-result-list ref="mescrollItem" :queryStr="this.searchVal"></search-result-list>
    </view>
   </view>
 </template>
 
 <script>
+// 引入mescrool-comp.js
+import mescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js';
 import { getDefaultText } from 'api/search'
 import { mapMutations } from 'vuex'
   // 搜索列表
@@ -43,7 +46,8 @@ const SEARCH_HISTORY = '1'
 // 搜索结果
 const SEARCH_RESULT = '2'
 export default {
-
+// 注册mixins
+mixins:[mescrollCompMixin],
   data() {
     return {
       // 绑定输入框中的内容
@@ -104,21 +108,21 @@ export default {
     // },
     // 获取焦点
     onSearchFocus(val) {
-      console.log("获取焦点");
+      // console.log("获取焦点");
       this.showType = SEARCH_HISTORY
     },
     // 失去焦点
     onSearchBlur(val) {
-      console.log('失去焦点');
+      // console.log('失去焦点');
     },
     // 清空内容
     onSearchClear(val) {
-      console.log('清空内容');
+      // console.log('清空内容');
       this.showType = SEARCH_HISTORY
     },
     // 点击取消
     onSearchCancel(val) {
-      console.log('点击取消按钮');
+      // console.log('点击取消按钮');
       this.showType = HOT_LIST
     }
   }

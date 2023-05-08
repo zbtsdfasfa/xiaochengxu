@@ -70,7 +70,16 @@
 						"navigationBarTitleText": "文章热搜"
 					}
 				}
-			]
+			    ,{
+                    "path" : "pages/blog-detail/blog-detail",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "文章详情",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
 		}
 	],
 	"condition": {

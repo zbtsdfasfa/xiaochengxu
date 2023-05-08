@@ -17,7 +17,7 @@ var components
 try {
   components = {
     hotRanking: function () {
-      return Promise.all(/*! import() | components/hot-ranking/hot-ranking */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/hot-ranking/hot-ranking")]).then(__webpack_require__.bind(null, /*! @/components/hot-ranking/hot-ranking.vue */ 143))
+      return Promise.all(/*! import() | components/hot-ranking/hot-ranking */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/hot-ranking/hot-ranking")]).then(__webpack_require__.bind(null, /*! @/components/hot-ranking/hot-ranking.vue */ 145))
     },
   }
 } catch (e) {

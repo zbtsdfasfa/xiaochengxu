@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "文章详情",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "mp-html": "/uni_modules/mp-html/components/mp-html/mp-html",
+    "article-comment-list": "/components/article-comment-list/article-comment-list"
+  }
+}

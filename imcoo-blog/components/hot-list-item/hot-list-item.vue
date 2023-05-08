@@ -1,5 +1,5 @@
 <template>
-	<view class="item-container">
+	<view class="item-container" @click="$emit('click')">
 		<view class="item-box">
 			<!-- 左边排名区域 -->
 			<view class="item-box-left">

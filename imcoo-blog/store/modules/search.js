@@ -2,6 +2,8 @@
 // 1.数据的存储
 // 2数据的读取
 const STORAGE_KEY = 'search-list';
+// 历史搜索的长度
+const HISTORY_MAX = 5;
 export default {
     namespaced: true,
     state: () => {
@@ -28,6 +30,10 @@ export default {
             }
             // 1.2把新的内容添加到头部
             state.searchData.unshift(val);
+            // 如果历史搜索的长度大于了 HISTORY_MAX 那就把HISTORY_MAX后面的的数据删除了
+            if(state.searchData.length > HISTORY_MAX) {
+                state.searchData.splice(HISTORY_MAX,state.searchData.length - HISTORY_MAX)
+            }
             this.commit('search/saveToStorage')
         },
         // 删除指定的数据

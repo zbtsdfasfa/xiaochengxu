@@ -379,6 +379,12 @@ var _default = {
           resolve(sum);
         }).exec();
       });
+    },
+    onItemClick: function onItemClick(item) {
+      console.log(item);
+      uni.navigateTo({
+        url: "/subpkg/pages/blog-detail/blog-detail?author=".concat(item.user_name, "&articleId=").concat(item._id)
+      });
     }
   }
 };

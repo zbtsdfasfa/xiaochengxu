@@ -20,6 +20,10 @@ function request({url,data,method}) {
 					reject(data.message);
 				}
 			},
+			// complete: () => {
+			// 	// 关闭加载
+			// 	uni.hideLoading();
+			//   },
 			fail:(error)=> {
 				reject(error);
 			}

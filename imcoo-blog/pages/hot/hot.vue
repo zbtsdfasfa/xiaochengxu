@@ -157,6 +157,10 @@ onPageScroll(res) {
           .exec();
       });
     },
+	onItemClick(item) {
+		console.log(item);
+		uni.navigateTo({ url: `/subpkg/pages/blog-detail/blog-detail?author=${item.user_name}&articleId=${item._id}` })
+	}
   }
 	}
 </script>

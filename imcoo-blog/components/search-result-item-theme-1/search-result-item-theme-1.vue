@@ -11,7 +11,7 @@
 			<!-- 发布时间 -->
 			<view class="item-updata-time">
 				<uni-icons class="read-updata-time-icon" color="#999999" type="compose" />
-				<text>{{ data.updateTime }}</text>
+				<text>{{ data.updateTime | relativeTime  }}</text>
 			</view>
 		</view>
 	</view>
