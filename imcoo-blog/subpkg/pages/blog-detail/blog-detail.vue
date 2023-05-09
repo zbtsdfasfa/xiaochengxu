@@ -20,25 +20,40 @@
 				</view>
 				<view class="detail-right">
 					<!-- 关注按钮 -->
-					<button class="follow" size="mini">关注</button>
+					<button 
+					class="follow" 
+					size="mini" 
+					@click="onFollowClick"
+					:loading="isFollowLoading"
+					:type="articleData.isFollow ? 'primary' : 'default'"
+					>{{ articleData.isFollow ? '已关注' : '关注' }}</button>
 				</view>
 			</view>
 			<!-- 文章内容 -->
 			<!-- <rich-text :nodes="articleData.content"></rich-text> -->
 			<!-- 文章内容 -->
 			<mp-html class="markdown_views" :content="addClassFromHTML(articleData.content)" scroll-table />
+			<!-- 文章评论 -->
 			<view class="comment-box">
 				<article-comment-list  :articleId="articleId"></article-comment-list>
 			</view>
+			<!-- 文章功能区域 -->
+			<article-operate @commitClick="onCommit"></article-operate>
+			<!-- 输入评论的pipup -->
+			<uni-popup ref="popup" type="bottom" @change="onCommitPopupChange"> 
+				<article-comment-commit /> 
+			</uni-popup>
 		</block>
 	</view>
 	</page-meta>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js';
 import mpHtml from '@/uni_modules/mp-html/components/mp-html/mp-html';
 import { getArticleDetail } from 'api/article'
+import { userFollow } from '../../../api/user';
 export default {
 	mixins: [MescrollCompMixin],
 	components: {
@@ -51,7 +66,11 @@ export default {
 			// 文章id
 			articleId: '',
 			// 文章详情数据
-			articleData: null
+			articleData: null,
+			// 关注用户的loading
+			isFollowLoading:false,
+			// popup的显示状态
+			isShowCommit:false
 		};
 	},
 	onLoad(options) {
@@ -62,6 +81,7 @@ export default {
 		this.loadArticleDetail()
 	},
 	methods: {
+		...mapActions('user' , ['isLogin']),
 		// 为所有的dom添加一个类名
 		addClassFromHTML(info) {
 			return info
@@ -106,7 +126,41 @@ export default {
 			this.articleData = res[1].data.data.data
 			console.log(res[1].data.data);
 			uni.hideLoading()
-		}
+		},
+		// 点击关注的点击事件
+		async onFollowClick() {
+			const isLogin =  await this.isLogin()
+			if(!isLogin) {
+				return
+			}
+			// 关注用户
+			// 开启button的loading
+			this.isFollowLoading = true;
+			const res = await userFollow({
+				author:this.author,
+				isFollow:!this.articleData.isFollow
+			});
+			// 成功后修改数据
+			this.articleData.isFollow = !this.articleData.isFollow;
+			// 关闭button的loading的显示
+			this.isFollowLoading = false
+		},
+		// 点击发表评论
+		onCommit() {
+			// 用过调用组件自定义的ref调用uni-popup方法
+			this.$refs.popup.open();
+		},
+		// 监听popup打开或者关闭的事件
+		onCommitPopupChange(e) {
+			console.log(e);
+			if(e.show) {
+				this.isShowCommit = e.show;
+			} else {
+				setTimeout(() => {
+					this.isShowCommit = e.show
+				},200)
+			}
+			}
 	}
 }
 </script>

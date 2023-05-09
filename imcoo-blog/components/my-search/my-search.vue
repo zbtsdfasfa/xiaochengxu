@@ -20,11 +20,24 @@
 		/>
 	</uni-search-bar>
 		<!-- 搜索按钮 -->
-		<view class="my-search-box" v-else>
+		<view 
+		class="my-search-box" 
+		v-else
+		:style="{
+			height:config.height + 'px',
+			backgroundColor: config.backgroundColor,
+			border:config.border
+		}"
+		>
 			<!-- 搜索图片 -->
-			<img class="icon" src="@/static/images/search.png" alt="搜索图标">
+			<img class="icon" :src="config.icon" alt="搜索图标">
 			<!-- 文本内容 -->
-			<text class="placeholder">{{ placeholderText }}</text>
+			<text 
+			class="placeholder"
+			:style=" {
+				color:config.textColor
+			}"
+			>{{ placeholderText }}</text>
 		</view>
 
 	</view>

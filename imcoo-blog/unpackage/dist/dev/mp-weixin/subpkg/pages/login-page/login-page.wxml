@@ -1,0 +1,1 @@
+<view><my-login bind:onLoginSuccess="__e" vue-id="479b75d7-1" data-event-opts="{{[['^onLoginSuccess',[['onLoginSuccess']]]]}}" bind:__l="__l"></my-login></view>

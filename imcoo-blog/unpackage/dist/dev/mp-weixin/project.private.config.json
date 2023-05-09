@@ -6,17 +6,5 @@
     "urlCheck": false
   },
   "libVersion": "2.31.0",
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "",
-          "pathName": "subpkg/pages/blog-detail/blog-detail",
-          "query": "author=hebtu666&articleId=6086a06482820e018ce54b3b",
-          "launchMode": "default",
-          "scene": null
-        }
-      ]
-    }
-  }
+  "condition": {}
 }

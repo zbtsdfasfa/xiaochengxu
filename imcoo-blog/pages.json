@@ -79,6 +79,15 @@
                 }
                 
                 }
+                ,{
+                    "path" : "pages/login-page/login-page",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "登录",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
 		}
 	],

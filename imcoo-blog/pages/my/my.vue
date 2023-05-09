@@ -1,7 +1,5 @@
 <template>
-	<view>
-		
-	</view>
+	<my-login></my-login>
 </template>
 
 <script>
@@ -14,6 +12,6 @@
 	}
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+ 
 </style>

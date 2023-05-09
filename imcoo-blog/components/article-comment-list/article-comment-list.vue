@@ -19,6 +19,9 @@
       :down="{
         use: false
       }"
+	  :up="{
+		textNoMore:'--我也是有底线的！！--'
+	  }"
     >
     <view class="comment-title">全部评论</view>
 		<block v-for="(item, index ) in commentList" :key="index">
@@ -53,7 +56,12 @@ import MescrollMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/me
 				// 评论列表
 				commentList:[],
 				// 是否全部显示评论
-				isShowAllComment:false
+				isShowAllComment:false,
+				// 是否初次加载
+				isinit:true,
+				mescroll:null,
+				 // 评论总数
+				 commentListTotal: 0,
 			};
 		},
 		created(){
@@ -66,20 +74,40 @@ import MescrollMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/me
 					page:this.page,
 					size:this.pageSize
 				})
-				this.commentList = res[1].data.data.list
-				console.log(res[1].data.data.list);
+				
+				// this.commentList = res[1].data.data.list
+				if(this.page === 1) {
+					this.commentList = res[1].data.data.list;
+				} else {
+					this.commentList = [...this.commentList,...res[1].data.data.list]
+				}
+				this.commentListTotal = res[1].data.data.count;
+				console.log(this.commentListTotal);
 			},
 			// 切换精简评论还是全部评论
 			onMoreClick() {
 				this.isShowAllComment = true
 			},
-			mescrollInit() {
-				console.log("首次");
+			async mescrollInit() {
+				await this.loadCommentList();
+				this.isinit = false;
+				this.getMescroll().endSuccess();
+				this.getMescroll().endBySize(this.commentList.length, this.commentListTotal);
 			},
 			// 上拉刷新
-			upCallback(){
-				console.log("属性");
-			}
+			async upCallback(){
+				if(this.isinit) return;
+				this.page +=1;
+				await this.loadCommentList();
+				this.getMescroll().endSuccess();
+				this.getMescroll().endBySize(this.commentList.length, this.commentListTotal);
+			},
+			getMescroll() {
+      if (!this.mescroll) {
+        this.mescroll = this.$refs.mescrollRef.mescroll;
+      }
+      return this.mescroll;
+    }
 		}
 	}
 </script>

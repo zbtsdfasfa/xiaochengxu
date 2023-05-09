@@ -9,7 +9,8 @@
       "root": "subpkg",
       "pages": [
         "pages/search-blog/search-blog",
-        "pages/blog-detail/blog-detail"
+        "pages/blog-detail/blog-detail",
+        "pages/login-page/login-page"
       ],
       "name": "sub-1"
     }
