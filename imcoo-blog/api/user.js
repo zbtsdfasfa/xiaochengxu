@@ -20,3 +20,26 @@ export function userFollow(data) {
         }
     })
 }
+
+// 发表评论
+export function userArticleComment(data)  {
+    return uni.request({
+        url:'https://www.fastmock.site/mock/b903dd8103cd55bfc6bd9e8006afc37f/shop-01/user/article/comment',
+        method:'POST',
+        headers:{
+            Authorization: store.state.user.token
+        },
+        data
+    })
+}
+
+// 用户点赞
+export function userPraise(data) {
+    return uni.request({
+      url: 'https://www.fastmock.site/mock/b903dd8103cd55bfc6bd9e8006afc37f/shop-01/user/praise',
+      data,
+      headers:{
+        Authorization: store.state.user.token
+    }
+    });
+  }

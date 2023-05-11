@@ -96,6 +96,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    hotVideoItem: function () {
+      return __webpack_require__.e(/*! import() | components/hot-video-item/hot-video-item */ "components/hot-video-item/hot-video-item").then(__webpack_require__.bind(null, /*! @/components/hot-video-item/hot-video-item.vue */ 353))
+    },
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function () {
   var _vm = this
   var _h = _vm.$createElement
@@ -135,10 +158,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 37));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 39));
+var _video = __webpack_require__(/*! api/video */ 352);
+//
+//
 //
 //
 //
@@ -147,7 +176,44 @@ exports.default = void 0;
 //
 var _default = {
   data: function data() {
-    return {};
+    return {
+      // 数据源
+      videoList: [],
+      page: 1,
+      size: 10
+    };
+  },
+  created: function created() {
+    this.loadHotVideoList();
+  },
+  methods: {
+    // 获取视频数据
+    loadHotVideoList: function loadHotVideoList() {
+      var _this = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var res;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _video.getHotVideoList)({
+                  page: _this.page,
+                  size: _this.size
+                });
+              case 2:
+                res = _context.sent;
+                _this.videoList = res[1].data.data.list;
+                // console.log(res[1].data.data.list);
+                console.log(_this.videoList);
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
   }
 };
 exports.default = _default;

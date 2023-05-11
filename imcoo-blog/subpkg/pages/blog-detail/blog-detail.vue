@@ -1,5 +1,7 @@
 <template>
+	 <!-- #ifndef H5 -->
 	<page-meta root-font-size="52px">
+		 <!-- #endif -->
 		<view class="detail-container">
 		<!-- 文章内容区域 -->
 		<block v-if="articleData">
@@ -35,17 +37,30 @@
 			<mp-html class="markdown_views" :content="addClassFromHTML(articleData.content)" scroll-table />
 			<!-- 文章评论 -->
 			<view class="comment-box">
-				<article-comment-list  :articleId="articleId"></article-comment-list>
+				<article-comment-list ref="mescrollItem"  :articleId="articleId"></article-comment-list>
 			</view>
 			<!-- 文章功能区域 -->
-			<article-operate @commitClick="onCommit"></article-operate>
+			<article-operate 
+			@commitClick="onCommit" 
+			:articleData="articleData" 
+			@changePraise="onChangePraise"></article-operate>
 			<!-- 输入评论的pipup -->
-			<uni-popup ref="popup" type="bottom" @change="onCommitPopupChange"> 
-				<article-comment-commit /> 
+			<uni-popup 
+			ref="popup" 
+			type="bottom" 
+			@change="onCommitPopupChange"
+			> 
+				<article-comment-commit
+				v-if="isShowCommit"
+				:articleId="articleId"
+			    @success="onSendSuccess"
+				/> 
 			</uni-popup>
 		</block>
 	</view>
+	<!-- #ifndef H5 -->
 	</page-meta>
+	  <!-- #endif -->
 </template>
 
 <script>
@@ -124,7 +139,7 @@ export default {
 				articleId: this.articleId
 			});
 			this.articleData = res[1].data.data.data
-			console.log(res[1].data.data);
+			// console.log(res[1].data.data);
 			uni.hideLoading()
 		},
 		// 点击关注的点击事件
@@ -152,7 +167,7 @@ export default {
 		},
 		// 监听popup打开或者关闭的事件
 		onCommitPopupChange(e) {
-			console.log(e);
+			// console.log(e);
 			if(e.show) {
 				this.isShowCommit = e.show;
 			} else {
@@ -160,11 +175,22 @@ export default {
 					this.isShowCommit = e.show
 				},200)
 			}
-			}
+		},
+		// 发表评论成功之后
+		onSendSuccess(data) {
+			this.$refs.popup.close();
+			this.isShowCommit = false;
+			this.$refs.mescrollItem.addCommentList(data);
+		},
+		/**
+     * 点赞处理回调
+     */
+	 onChangePraise(isPraise) {
+      this.articleData.isPraise = isPraise;
+    },
 	}
 }
 </script>
-
 <style lang="scss" >
 @import '~@/styles/article-detail.scss';
 .detail-container {

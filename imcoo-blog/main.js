@@ -6,7 +6,7 @@ import store from './store';
 // 通用样式
 import './styles/global.scss';
 // 文章详情样式
-
+import './styles/article-detail.scss'
 // 导入过滤器
 import * as filters from './filters';
 

@@ -1,0 +1,1 @@
+.empty-data-cocntainer{display:flex;flex-direction:column;align-items:center;padding-top:35%}.empty-data-cocntainer .img{width:64px;height:64px}.empty-data-cocntainer .txt{margin-top:4px;color:#999;font-size:14px}

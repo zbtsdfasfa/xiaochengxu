@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "文章热搜",
+  "usingComponents": {
+    "my-search": "/components/my-search/my-search",
+    "search-hot-list": "/components/search-hot-list/search-hot-list",
+    "search-history": "/components/search-history/search-history",
+    "search-result-list": "/components/search-result-list/search-result-list"
+  }
+}

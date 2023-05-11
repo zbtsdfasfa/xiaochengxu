@@ -80,7 +80,7 @@ var components
 try {
   components = {
     mySearch: function () {
-      return __webpack_require__.e(/*! import() | components/my-search/my-search */ "components/my-search/my-search").then(__webpack_require__.bind(null, /*! @/components/my-search/my-search.vue */ 93))
+      return Promise.all(/*! import() | components/my-search/my-search */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/my-search/my-search")]).then(__webpack_require__.bind(null, /*! @/components/my-search/my-search.vue */ 93))
     },
     articlePraise: function () {
       return __webpack_require__.e(/*! import() | components/article-praise/article-praise */ "components/article-praise/article-praise").then(__webpack_require__.bind(null, /*! @/components/article-praise/article-praise.vue */ 278))
@@ -158,6 +158,12 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var _default = {
   name: "article-operate",
+  props: {
+    articleData: {
+      type: Object,
+      required: true
+    }
+  },
   data: function data() {
     return {};
   },

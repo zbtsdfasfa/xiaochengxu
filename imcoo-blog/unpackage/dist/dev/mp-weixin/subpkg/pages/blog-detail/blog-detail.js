@@ -254,9 +254,9 @@ var _default = {
               case 3:
                 res = _context.sent;
                 _this.articleData = res[1].data.data.data;
-                console.log(res[1].data.data);
+                // console.log(res[1].data.data);
                 uni.hideLoading();
-              case 7:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -313,7 +313,7 @@ var _default = {
     // 监听popup打开或者关闭的事件
     onCommitPopupChange: function onCommitPopupChange(e) {
       var _this3 = this;
-      console.log(e);
+      // console.log(e);
       if (e.show) {
         this.isShowCommit = e.show;
       } else {
@@ -321,6 +321,18 @@ var _default = {
           _this3.isShowCommit = e.show;
         }, 200);
       }
+    },
+    // 发表评论成功之后
+    onSendSuccess: function onSendSuccess(data) {
+      this.$refs.popup.close();
+      this.isShowCommit = false;
+      this.$refs.mescrollItem.addCommentList(data);
+    },
+    /**
+       * 点赞处理回调
+       */
+    onChangePraise: function onChangePraise(isPraise) {
+      this.articleData.isPraise = isPraise;
     }
   })
 };

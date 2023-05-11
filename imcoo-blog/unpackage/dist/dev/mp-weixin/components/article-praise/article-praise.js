@@ -114,26 +114,79 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
 
-
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-//
-//
-//
-//
-//
-//
-//
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 37));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 39));
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _vuex = __webpack_require__(/*! vuex */ 34);
+var _user = __webpack_require__(/*! api/user */ 40);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var _default = {
   name: "article-praise",
+  props: {
+    articleData: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    getIsPraise: function getIsPraise() {
+      return this.articleData && this.articleData.isPraise ? '/static/images/praise.png' : '/static/images/un-praise.png';
+    }
+  },
   data: function data() {
     return {};
-  }
+  },
+  methods: _objectSpread(_objectSpread({}, (0, _vuex.mapActions)('user', ['isLogin'])), {}, {
+    onClick: function onClick() {
+      var _this = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _this.isLogin();
+              case 2:
+                if (_context.sent) {
+                  _context.next = 4;
+                  break;
+                }
+                return _context.abrupt("return");
+              case 4:
+                // 展示加载框
+                uni.showLoading({
+                  title: '加载中'
+                });
+                _context.next = 7;
+                return (0, _user.userPraise)({
+                  articleId: _this.articleData.articleId,
+                  isPraise: !_this.articleData.isPraise
+                });
+              case 7:
+                // 关闭加载
+                uni.hideLoading();
+                // 更新数据
+                _this.$emit('changePraise', !_this.articleData.isPraise);
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  })
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

@@ -318,6 +318,9 @@ var _default = {
         this.mescroll = this.$refs.mescrollRef.mescroll;
       }
       return this.mescroll;
+    },
+    addCommentList: function addCommentList(data) {
+      this.commentList.unshift(data);
     }
   }
 };

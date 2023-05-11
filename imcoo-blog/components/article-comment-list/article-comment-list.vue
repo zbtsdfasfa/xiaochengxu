@@ -107,8 +107,11 @@ import MescrollMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/me
         this.mescroll = this.$refs.mescrollRef.mescroll;
       }
       return this.mescroll;
-    }
-		}
+    },
+	addCommentList(data) {
+		this.commentList.unshift(data)
+	}
+	}
 	}
 </script>
 

@@ -3154,7 +3154,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -12438,7 +12438,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -12459,14 +12459,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -12562,7 +12562,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"imcoo-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -14654,6 +14654,35 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ 352:
+/*!****************************************************!*\
+  !*** D:/git仓库/xiaochengxu/imcoo-blog/api/video.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getHotVideoList = getHotVideoList;
+var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request */ 41));
+// 热播视频接口
+
+function getHotVideoList(data) {
+  return uni.request({
+    url: 'https://www.fastmock.site/mock/b903dd8103cd55bfc6bd9e8006afc37f/shop-01/video/list',
+    data: data,
+    method: 'GET'
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
 /***/ 36:
 /*!*************************************************************!*\
   !*** D:/git仓库/xiaochengxu/imcoo-blog/store/modules/user.js ***!
@@ -14826,6 +14855,17 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ 369:
+/*!****************************************************************!*\
+  !*** D:/git仓库/xiaochengxu/imcoo-blog/static/images/search.png ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEKElEQVRoQ+2Za8iNWRTHf+8HpUYplzBFwsQYDDUu84GGXBMG45LbzOQec2GSXAqFD+5yiRkyyHVcJjNFozHKB+QyCDG5RSm3mg9IEvq/raeO03vOXs/znJPz1rvrfHrWXmv991p7rf/ap4xKvsoquf9UAXjfEayKQI4IVAOaA6+Bq8WMUqEi0BL4HOgDtAOaZDl9BTgFHAfOAtcKBSotgC+A74BBGQ69BB7YT/obAB9mObwbWAL8mxZIUgA1gWXAOHPgHPAncBg4ncMpRUe/wQboObAUmJ8GRBIArYFDQGNAjv9sP68fishEYLwBUVp19W7OlosLoClww5T8BgxNahjQvdkLfGI64vpSvi3OplrALUDpswb4PoXzmVt1uTsCO4GRcXXGAfA7MABYkJW3ushKgzTrH0B6FgFz4yjyApgAbAS2A2MyDCgFGgGd4hitQLYe8BfQBugJHPXq8wJQ7W5hjl425XJeeax7UIhmpYPZas4LhGt5AIwGtgGLgTmmVVVkIdAduOiy5BNSGe4NDAf2eLZ4AOyz2q1qoZOuDZw3AL94jMSQGQtsAtYBUz37QgDEaZ4B/wGtTOE3wCzjOh4bcWTUW24Dl4BPPRtDAHrY5VprlEE6FZEXwCiPgQQycl7NsoYdXl4VIQAjgB3mvEBoycAWYGUC5zxbopTtAJwJbQgB+NEc/QrYb8oeA5MBdeJiLDVJ5f+3wK8hAyEAqjqqNr0slaTvjXGXtM0rl29qZrOBmcZYU6WQyuUGa15qYhGAjzI4UeiQ4n5XFVI1UtcXaUwFQNRXOTnD6LOUVbdLHNKd9LtoeV9rnNdDSkIpJH4inpJNIUJ603y/CzT0Es0QADmiUxADrZ/GK+desVKx0z+A/p49HgCamOZ5c9JjNI9MZGu6t0x7AHxm9fhv4z4pfcy5Xa8YJ62Bid2KrgSXB4CUqJmpqWkMVJUoxlpv/WUF8JPXgBeA+sARQIN4F5uFvTY8ctMAOa7XDJ3+Hc8myXgBSFZUYgpwz4YYr42QnIb8+yakvqNHAveKA0BKdQ+62Z3Q0PG/21LFgpmPBNmjqkt1XABSussGDoV7EqBZOckaCBxIevKRwSQAtDcqdxGg1XketDLBafbVfK2XvLbAU8t7RSJ2+sS9A9mnLL7yNdDZPpwAjhnpq+hpUfdHrDZaYrOi5ZJV83pl87WohHsljUCmgS+txA5xWFUVE0FTWc50VDoOAjcN5AWHrnKRQgCIbNUFBKIZUMdmZ317CDyyxiTnBaKi9QOwClAkdT+eeEAUEoDHXkhmOSAaoSebYSHhQkfAY88jE42Uro5cahEQwA+MwrcH1KGVVjlXKQKQsx8bCJXdflkX/h0wpQpATuqFTi91+hNlc64QlDIA+ayHrrzErtQBBC99FYDgERVZoCoCRT7goPq3Ori2MVeS0EwAAAAASUVORK5CYII="
+
+/***/ }),
+
 /***/ 37:
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
@@ -14837,6 +14877,19 @@ exports.default = _default;
 
 var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 38)();
 module.exports = runtime;
+
+/***/ }),
+
+/***/ 370:
+/*!******************************************************************!*\
+  !*** D:/git仓库/xiaochengxu/imcoo-blog/styles/article-detail.scss ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
 
 /***/ }),
 
@@ -15234,7 +15287,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.login = login;
+exports.userArticleComment = userArticleComment;
 exports.userFollow = userFollow;
+exports.userPraise = userPraise;
 var _store = _interopRequireDefault(__webpack_require__(/*! ../store */ 33));
 var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request */ 41));
 // 用户登陆的接口
@@ -15251,6 +15306,29 @@ function login(data) {
 function userFollow(data) {
   return uni.request({
     url: 'https://www.fastmock.site/mock/b903dd8103cd55bfc6bd9e8006afc37f/shop-01/user/follow',
+    data: data,
+    headers: {
+      Authorization: _store.default.state.user.token
+    }
+  });
+}
+
+// 发表评论
+function userArticleComment(data) {
+  return uni.request({
+    url: 'https://www.fastmock.site/mock/b903dd8103cd55bfc6bd9e8006afc37f/shop-01/user/article/comment',
+    method: 'POST',
+    headers: {
+      Authorization: _store.default.state.user.token
+    },
+    data: data
+  });
+}
+
+// 用户点赞
+function userPraise(data) {
+  return uni.request({
+    url: 'https://www.fastmock.site/mock/b903dd8103cd55bfc6bd9e8006afc37f/shop-01/user/praise',
     data: data,
     headers: {
       Authorization: _store.default.state.user.token

@@ -80,7 +80,7 @@ var components
 try {
   components = {
     uniEasyinput: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 342))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 298))
     },
   }
 } catch (e) {
@@ -137,12 +137,16 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
 
-
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 37));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 39));
+var _user = __webpack_require__(/*! api/user */ 40);
 //
 //
 //
@@ -160,16 +164,64 @@ exports.default = void 0;
 //
 var _default = {
   name: "article-comment-commit",
+  props: {
+    articleId: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
-      value: ''
+      value: '',
+      bottom: 0
     };
   },
+  created: function created() {
+    var _this = this;
+    uni.onKeyboardHeightChange(function (_ref) {
+      var height = _ref.height;
+      _this.bottom = height;
+    });
+  },
   methods: {
-    onBtnClick: function onBtnClick() {}
+    onBtnClick: function onBtnClick() {
+      var _this2 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var res;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                uni.showLoading({
+                  title: '加载中'
+                });
+                _context.next = 3;
+                return (0, _user.userArticleComment)({
+                  articleId: _this2.articleId,
+                  content: _this2.value
+                });
+              case 3:
+                res = _context.sent;
+                console.log(res[1].data.data);
+                uni.showToast({
+                  title: '发表成功',
+                  icon: 'success',
+                  mask: true
+                });
+                // 发表成功之后的回调
+                _this2.$emit('success', res[1].data.data);
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

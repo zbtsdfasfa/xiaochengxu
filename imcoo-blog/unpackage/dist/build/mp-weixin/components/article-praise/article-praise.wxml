@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['onClick',['$event']]]]]}}" class="praise-box data-v-7c1d8262" bindtap="__e"><image class="img data-v-7c1d8262" src="{{getIsPraise}}"></image><text class="txt data-v-7c1d8262">点赞</text></view>

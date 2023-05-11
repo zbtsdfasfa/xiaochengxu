@@ -18,6 +18,7 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 27));
 var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 33));
 __webpack_require__(/*! ./styles/global.scss */ 42);
+__webpack_require__(/*! ./styles/article-detail.scss */ 370);
 var filters = _interopRequireWildcard(__webpack_require__(/*! ./filters */ 43));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -136,7 +137,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _default = {};
+var _default = {
+  onLaunch: function onLaunch() {
+    console.log('当前处于非 H5 编译平台');
+  }
+};
 exports.default = _default;
 
 /***/ }),

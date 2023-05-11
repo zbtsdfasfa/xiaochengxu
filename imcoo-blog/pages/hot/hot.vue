@@ -172,6 +172,12 @@ onPageScroll(res) {
 		position: sticky;
 		top: 0;
 		z-index: 99;
+		/* #ifdef H5 */ 
+		top: 0;
+		/* #endif */
+		 /* #ifdef H5 */
+		 top: 44px;
+		 /* #endif */
 	}
 	.logo{
 		width: 100%;

@@ -1,0 +1,1 @@
+<view class="hot-video-item-container data-v-ca422eb8"><view class="video-box data-v-ca422eb8"><video class="video data-v-ca422eb8" id="myVideo" src="{{data.play_url}}" enable-danmu="{{true}}" danmu-btn="{{true}}" controls="{{true}}"></video></view><hot-video-info vue-id="7e02a63c-1" data="{{data}}" class="data-v-ca422eb8" bind:__l="__l"></hot-video-info></view>

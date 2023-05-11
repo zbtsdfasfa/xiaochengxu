@@ -1,0 +1,1 @@
+<view class="ranking data-v-de4a8a0e"><image class="ranking-bg _img data-v-de4a8a0e" src="{{getRankingBg}}" alt="左侧排名图片"></image><text class="{{['ranking-text','data-v-de4a8a0e',(ranking<=3)?'text-color':'']}}">{{ranking}}</text></view>

@@ -236,4 +236,13 @@
 			}
 		}
 	}
+	/* #ifdef H5 */
+	/deep/.uni-scroll-view::-webkit-scrollbar {
+		display: none;
+	}
+	
+	/deep/.uni-scroll-view {
+		scrollbar-width: none;
+	}
+	/* #endif */
 </style>

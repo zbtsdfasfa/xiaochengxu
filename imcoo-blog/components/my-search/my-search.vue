@@ -20,24 +20,11 @@
 		/>
 	</uni-search-bar>
 		<!-- 搜索按钮 -->
-		<view 
-		class="my-search-box" 
-		v-else
-		:style="{
-			height:config.height + 'px',
-			backgroundColor: config.backgroundColor,
-			border:config.border
-		}"
-		>
+		<view class="my-search-box" v-else>
 			<!-- 搜索图片 -->
-			<img class="icon" :src="config.icon" alt="搜索图标">
+			<img class="icon" src="@/static/images/search.png" alt="搜索图标">
 			<!-- 文本内容 -->
-			<text 
-			class="placeholder"
-			:style=" {
-				color:config.textColor
-			}"
-			>{{ placeholderText }}</text>
+			<text class="placeholder">{{ placeholderText }}</text>
 		</view>
 
 	</view>
@@ -46,7 +33,7 @@
 <script>
 export default {
 	name: "my-search",
-	props: {
+	props: { 
 		// 绑定用户输入的内容  不要用v-modle这样会改变父组件传递的数据
 		value:{
 			type:String
